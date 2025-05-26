@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronic Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .product-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .card-body {
+            padding: 15px;
+            flex-grow: 1;
+        }
+
+        .price {
+            color: #e44d26;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .badge {
+            font-size: 0.85rem;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        @media (max-width: 1200px) {
+            .col-md-3 {
+                flex: 0 0 25%;
+                max-width: 25%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .col-md-3 {
+                flex: 0 0 33.33%;
+                max-width: 33.33%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .col-md-3 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .col-md-3 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="/">Electronic Store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" href="/products">Tất cả sản phẩm</a></li>
+                <!-- Dropdown danh mục -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown">Danh mục</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/products/category/Thiết bị điện tử">Thiết bị điện tử</a></li>
+                        <li><a class="dropdown-item" href="/products/category/Phụ kiện điện tử">Phụ kiện điện tử</a></li>
+                        <li><a class="dropdown-item" href="/products/category/Điện thoại">Điện thoại</a></li>
+                        <li><a class="dropdown-item" href="/products/category/Laptop">Laptop</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Đăng nhập/Đăng ký hoặc tài khoản -->
+            <ul class="navbar-nav">
+                <li class="nav-item" th:if="${session.user == null}">
+                    <a class="nav-link" href="/login">Đăng nhập</a>
+                </li>
+                <li class="nav-item" th:if="${session.user == null}">
+                    <a class="nav-link" href="/register">Đăng ký</a>
+                </li>
+                <li class="nav-item dropdown" th:if="${session.user != null}">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                        <span th:text="${session.user.name}">Tên người dùng</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="/profile">Hồ sơ</a></li>
+                        <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row g-4">
+        <!-- Product Cards -->
+        <div class="col-md-3" th:each="product : ${products}">
+            <div class="card product-card">
+                <img th:src="${product.imageUrl}" class="card-img-top product-image" th:alt="${product.name}">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${product.name}">Product Name</h5>
+                    <p class="card-text" th:text="${product.description}">Description</p>
+                    <p class="price" th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 0, 'POINT') + ' VNĐ'}">Price</p>
+                    <span class="badge bg-secondary" th:text="${product.category}">Category</span>
+                    
+                    <!-- Thêm vào giỏ hàng -->
+                    <form th:action="@{/cart/add}" method="post">
+                        <input type="hidden" th:value="${product.id}" name="productId"/>
+                        <input type="number" name="quantity" value="1" min="1" class="form-control mb-2"/>
+                        <button type="submit" class="btn btn-primary w-100">Thêm vào giỏ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
