@@ -21,7 +21,7 @@ public class RegisterController {
 
     @GetMapping("/register")
     public String showRegisterForm() {
-        return "register"; // Trả về tên template Thymeleaf (register.html)
+        return "register";
     }
 
     @PostMapping("/register")
