@@ -81,3 +81,4 @@ public class RegisterController {
         return "redirect:/login"; // Chuyển hướng đến trang đăng nhập
     }
 }
+
