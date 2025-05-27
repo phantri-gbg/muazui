@@ -17,7 +17,11 @@ public class LoginController {
     private UserService userService;
 
     @GetMapping("/login")
-    public String showLoginForm() {
+    public String showLoginForm(HttpSession session) {
+        // Nếu đã đăng nhập, chuyển hướng đến trang chủ
+        if (session.getAttribute("userId") != null) {
+            return "redirect:/";
+        }
         return "login"; // Maps to login.html
     }
 
@@ -27,18 +31,18 @@ public class LoginController {
         try {
             User user = userService.authenticate(email, password);
             if (user != null) {
-                // Store user info in session
+                // Lưu thông tin người dùng vào session
                 session.setAttribute("userId", user.getUserId());
                 session.setAttribute("email", user.getEmail());
                 session.setAttribute("role", user.getRole());
-                session.setMaxInactiveInterval(7 * 24 * 60 * 60); // 7 days
-                return "redirect:/"; // Redirect to homepage
+                session.setMaxInactiveInterval(7 * 24 * 60 * 60); // 7 ngày
+                return "redirect:/"; // Chuyển hướng đến trang chủ
             } else {
-                model.addAttribute("error", "Invalid email or password");
+                model.addAttribute("error", "Email hoặc mật khẩu không đúng.");
                 return "login";
             }
         } catch (Exception e) {
-            model.addAttribute("error", "An error occurred during login. Please try again.");
+            model.addAttribute("error", "Đã xảy ra lỗi khi đăng nhập. Vui lòng thử lại.");
             return "login";
         }
     }

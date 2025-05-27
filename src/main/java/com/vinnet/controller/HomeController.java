@@ -31,6 +31,7 @@ public class HomeController {
             products = productRepository.findAll();
         }
         products.forEach(product -> {
+            // Xử lý hình ảnh
             if (product.getImages() != null) {
                 String[] imageLinks = product.getImages().split(",");
                 if (imageLinks.length > 0 && !imageLinks[0].matches(".*\\.(jpg|png|jpeg|gif)$")) {
@@ -39,15 +40,14 @@ public class HomeController {
             } else {
                 product.setImages("https://via.placeholder.com/150?text=No+Image");
             }
+            // Xử lý tên người bán
             User seller = userRepository.findById(product.getUserId()).orElse(null);
-            if (seller != null) {
-                product.setSellerName(seller.getName());
-            } else {
-                product.setSellerName("Unknown");
-            }
+            product.setSellerName(seller != null && seller.getName() != null ? seller.getName() : "Unknown");
         });
         model.addAttribute("products", products);
         model.addAttribute("search", search);
+        // Truyền userId từ session để hiển thị trạng thái đăng nhập
+        model.addAttribute("session.userId", session.getAttribute("userId"));
         return "home";
     }
 
