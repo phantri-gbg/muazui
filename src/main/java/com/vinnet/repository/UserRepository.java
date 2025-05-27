@@ -9,3 +9,4 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("SELECT MAX(u.userId) FROM User u")
     Integer findMaxUserId();
 } //
+
