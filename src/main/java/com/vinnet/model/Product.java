@@ -1,57 +1,47 @@
 package com.vinnet.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "Products")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
     @Id
-    @Column(name = "product_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ProductID")
     private Integer productId;
 
-    @Column(name = "title", nullable = false)
-    private String title;
-
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "price", nullable = false)
-    private Double price;
-
-    @Column(name = "category_id")
-    private Integer categoryId;
-
-    @Column(name = "user_id")
+    @Column(name = "UserID", nullable = false)
     private Integer userId;
 
-    @Column(name = "status")
-    private String status = "pending";
+    @Column(name = "CategoryID")
+    private Integer categoryId;
 
-    @Column(name = "images")
-    private String images;
+    @Column(name = "Title", nullable = false)
+    private String title;
 
-    @Column(name = "is_auction")
-    private Boolean isAuction = false;
+    @Column(name = "Description")
+    private String description;
 
-    @Column(name = "auction_end_time")
-    private LocalDateTime auctionEndTime;
+    @Column(name = "Price", nullable = false)
+    private BigDecimal price;
 
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @Column(name = "Quantity", nullable = false)
+    private Integer quantity;
 
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    @Column(name = "IsAvailable")
+    private Boolean isAvailable;
 
-    @Column(name = "sellerName")
-    private String sellerName;
+    @Column(name = "ImageUrl")
+    private String imageUrl;
+
+    @Column(name = "CreatedAt")
+    private LocalDateTime createdAt;
 }

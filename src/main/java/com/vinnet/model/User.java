@@ -1,53 +1,51 @@
 package com.vinnet.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
-@Data
+@Entity
+@Table(name = "Users")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@Table(name = "Users")
 public class User {
-    @Id
-    @Column(name = "user_id")
-    private int userId;
 
-    @Column(name = "email", nullable = false, unique = true, length = 255)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "UserID") // Loại bỏ nullable = true
+    private Integer userId;
+
+    @Column(name = "FullName")
+    private String fullName;
+
+    @Column(name = "Email", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password", nullable = false, length = 255)
+    @Column(name = "Password", nullable = false)
     private String password;
 
-    @Column(name = "name", length = 100)
-    private String name;
-
-    @Column(name = "phone", length = 20)
-    private String phone;
-
-    @Column(name = "address")
-    private String address;
-
-    @Column(name = "avatar_url", length = 255)
-    private String avatarUrl;
-
-    @Column(name = "points")
-    private int points;
-
-    @Column(name = "role", length = 10)
+    @Column(name = "Role")
     private String role;
 
-    @Column(name = "created_at")
-    private Timestamp createdAt;
+    @Column(name = "CreatedAt")
+    private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
-    private Timestamp updatedAt;
+    @Column(name = "Status", columnDefinition = "BIT DEFAULT 1")
+    private Boolean status;
+
+    @Column(name = "IsSeller", columnDefinition = "BIT DEFAULT 0")
+    private Boolean isSeller;
+
+    @Column(name = "Address")
+    private String address;
+
+    @Column(name = "Phone")
+    private String phone;
+
+    @Column(name = "ProfilePicture")
+    private String profilePicture;
 }
-
-

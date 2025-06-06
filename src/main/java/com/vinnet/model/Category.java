@@ -1,27 +1,20 @@
 package com.vinnet.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-
-
+@Entity
+@Table(name = "Categories")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity
-@Table(name = "Categories")
 public class Category {
     @Id
-    @Column(name = "category_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CategoryID")
     private Integer categoryId;
 
-    @Column(name = "name")
+    @Column(name = "Name", nullable = false, unique = true)
     private String name;
-
-    @Column(name = "parent_id")
-    private Integer parentId;
 }
