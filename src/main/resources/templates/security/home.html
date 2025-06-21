@@ -4,23 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MuaZui - Nền tảng thương mại điện tử</title>
-    
-  
+    <!-- Nhúng Bootstrap, Google Fonts, FontAwesome và CSS riêng -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   
-
-  
     <link rel="stylesheet" href="/css/home.css">
-    
 </head>
 
 <body>
-<!-- Header -->
+<!-- Header: Phần đầu trang -->
 <header>
     <div class="container">
-        <!-- thanh thông tin trên cùng  -->
+        <!-- Thanh topbar: Thông tin liên hệ, hỗ trợ, ngôn ngữ -->
         <div class="header-topbar">
             <div class="topbar-left">
                 <span class="topbar-item">
@@ -51,6 +46,7 @@
             </div>
         </div>
 
+        <!-- Logo, slogan và thanh điều hướng chính -->
         <div class="header-top">
             <div class="brand-section">
                 <h1 class="brand-logo">
@@ -59,33 +55,29 @@
                 </h1>
                 <p class="brand-tagline">Nền tảng mua bán trực tuyến</p>
             </div>
-            
-            
-            
+            <!-- Thanh menu điều hướng chính -->
             <nav class="navbar navbar-expand-lg">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <div class="navbar-nav mx-auto">
+                        <!-- Trang chủ -->
                         <a class="nav-link" href="/">
                             <i class="fas fa-home"></i>
                             <span>Trang chủ</span>
                         </a>
+                        <!-- Sản phẩm -->
                         <a class="nav-link" href="/products">
                             <i class="fas fa-box"></i>
                             <span>Sản phẩm</span>
                         </a>
-                        
-                        <!-- Thêm Flash Sale -->
+                        <!-- Flash Sale -->
                         <a class="nav-link flash-sale-link" href="/flash-sale">
                             <i class="fas fa-bolt"></i>
                             <span>Flash Sale</span>
-                           
                         </a>
-                        
-                        <!-- Danh mục dropdown -->
+                        <!-- Danh mục sản phẩm (dropdown) -->
                         <div class="nav-dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fas fa-list"></i>
@@ -94,7 +86,6 @@
                             <ul class="dropdown-menu mega-menu">
                                 <div class="mega-menu-content">
                                     <div class="mega-menu-column">
-                                        
                                         <li><a class="dropdown-item" href="/categories/electronics">
                                             <i class="fas fa-mobile-alt"></i> Điện tử
                                         </a></li>
@@ -103,7 +94,6 @@
                                         </a></li>
                                     </div>
                                     <div class="mega-menu-column">
-                                      
                                         <li><a class="dropdown-item" href="/categories/fashion">
                                             <i class="fas fa-tshirt"></i> Thời trang
                                         </a></li>
@@ -112,7 +102,6 @@
                                         </a></li>
                                     </div>
                                     <div class="mega-menu-column">
-                                      
                                         <li><a class="dropdown-item" href="/categories/home-appliances">
                                             <i class="fas fa-home"></i> Gia dụng
                                         </a></li>
@@ -127,10 +116,7 @@
                                 </a></li>
                             </ul>
                         </div>
-                        
-                       
-
-                        <!-- User Menu  -->
+                        <!-- Menu tài khoản người dùng (nếu đã đăng nhập) -->
                         <div th:if="${isAuthenticated}" class="nav-dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                 <i class="fas fa-user-circle"></i>
@@ -166,8 +152,7 @@
                                 </li>
                             </ul>
                         </div>
-                        
-                        <!-- Guest Menu  -->
+                        <!-- Menu cho khách chưa đăng nhập -->
                         <div th:unless="${isAuthenticated}" class="auth-buttons">
                             <a class="nav-link btn-login" th:href="@{/security/login/form}">
                                 <i class="fas fa-sign-in-alt"></i>
@@ -183,75 +168,32 @@
             </nav>
         </div>
         
-        <!-- Enhanced Search Bar với filter -->
+        <!-- Thanh tìm kiếm nâng cao -->
         <div class="search-section">
             <div class="search-container">
                 <form th:action="@{/home}" method="get" class="search-form main-search-form">
                     <div class="search-input-group">
-                        
-                        
                         <input type="text" 
                                name="keyword" 
                                class="search-input" 
                                placeholder="Tìm kiếm sản phẩm, thương hiệu, danh mục..."
                                th:value="${keyword != null} ? ${keyword} : ''"
                                autocomplete="off">
-                        
-                        <!-- Thêm Voice Search -->
+                        <!-- Nút tìm kiếm bằng giọng nói -->
                         <button type="button" class="voice-search-btn" title="Tìm kiếm bằng giọng nói">
                             <i class="fas fa-microphone"></i>
                         </button>
-                        
-                        <!-- Thêm Camera Search -->
+                        <!-- Nút tìm kiếm bằng hình ảnh -->
                         <button type="button" class="camera-search-btn" title="Tìm kiếm bằng hình ảnh">
                             <i class="fas fa-camera"></i>
                         </button>
-                        
                         <button type="submit" class="search-btn">
                             <span class="btn-text">Tìm kiếm</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
-                    
-                    <!-- Thêm Advanced Search Toggle -->
-                    <!-- <div class="advanced-search-toggle">
-                        <button type="button" class="advanced-toggle-btn">
-                            <i class="fas fa-sliders-h"></i>
-                            Tìm kiếm nâng cao
-                        </button>
-                    </div> -->
-                    
-                    <!-- Advanced Search Panel -->
-                    <!-- <div class="advanced-search-panel" style="display: none;">
-                        <div class="advanced-filters">
-                            <div class="filter-group">
-                                <label>Khoảng giá:</label>
-                                <input type="number" name="minPrice" placeholder="Từ" class="price-input">
-                                <span>-</span>
-                                <input type="number" name="maxPrice" placeholder="Đến" class="price-input">
-                            </div>
-                            <div class="filter-group">
-                                <label>Địa điểm:</label>
-                                <select name="location" class="location-select">
-                                    <option value="">Toàn quốc</option>
-                                    <option value="hanoi">Hà Nội</option>
-                                    <option value="hcm">TP.HCM</option>
-                                    <option value="danang">Đà Nẵng</option>
-                                </select>
-                            </div>
-                            <div class="filter-group">
-                                <label>Tình trạng:</label>
-                                <select name="condition" class="condition-select">
-                                    <option value="">Tất cả</option>
-                                    <option value="new">Mới</option>
-                                    <option value="used">Đã sử dụng</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div> -->
                 </form>
-                
-                <!-- Quick Search Suggestions -->
+                <!-- Gợi ý tìm kiếm phổ biến -->
                 <div class="search-suggestions">
                     <span class="suggestion-label">Tìm kiếm phổ biến:</span>
                     <div class="suggestion-tags">
@@ -261,8 +203,7 @@
                         <a href="/home?keyword=gia dụng" class="suggestion-tag">Gia dụng</a>
                     </div>
                 </div>
-                
-                <!-- Thêm Recent Searches -->
+                <!-- Tìm kiếm gần đây -->
                 <div class="recent-searches" th:if="${recentSearches != null}">
                     <span class="recent-label">Tìm kiếm gần đây:</span>
                     <div class="recent-tags">
@@ -274,8 +215,7 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Thêm Breadcrumb Navigation -->
+        <!-- Breadcrumb: Điều hướng vị trí trang -->
         <div class="breadcrumb-section" th:if="${breadcrumbs != null}">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -294,7 +234,7 @@
     </div>
 </header>
 
-<!-- Banner -->
+<!-- Banner: Slide ảnh quảng cáo -->
 <main>
     <section class="banner">
         <div class="banner-slider">
@@ -306,30 +246,26 @@
                 <img src="/images/banner/banner2.jpg" alt="Model 4" class="banner-image">
                 <img src="/images/banner/banner3.jpg" alt="Model 5" class="banner-image">
                 <img src="/images/banner/banner4.jpg" alt="Model 6" class="banner-image">
-                
-              
-               
             </div>
             <button class="banner-arrow" id="next" aria-label="Next">
                 <i class="fa-solid fa-circle-arrow-right"></i>
             </button>
-            
         </div>
     </section>
+    <!-- Khu vực sản phẩm sẽ được thêm động (nếu có) -->
     <section id="products-section" class="hidden">
         <!-- Sản phẩm sẽ được thêm ở đây -->
     </section>
 </main>
 
-<!-- Phần còn lại của HTML giữ nguyên... -->
 <!-- Sản phẩm nổi bật -->
-<!-- Thay đổi phần sản phẩm -->
 <section class="product-section container my-5">
     <h2 class="text-center mb-5">Tin đăng dành cho bạn</h2>
     <div th:if="${#lists.isEmpty(products)}" class="alert alert-warning text-center">
         Không tìm thấy sản phẩm nào.
     </div>
     <div class="row g-3">
+        <!-- Lặp qua danh sách sản phẩm -->
         <div th:each="product : ${products}" class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
             <div class="product-card h-100">
                 <span class="status-badge" th:text="${product.isAvailable} ? 'Còn hàng' : 'Hết hàng'">Còn hàng</span>
@@ -338,8 +274,7 @@
                 <div class="product-content">
                     <h3 th:text="${product.title}">Tên sản phẩm</h3>
                     <p th:text="${product.description != null} ? ${product.description} : 'Chưa có mô tả'">Mô tả sản phẩm ngắn gọn...</p>
-                    
-                    <!-- Rating -->
+                    <!-- Đánh giá sao -->
                     <div class="product-rating">
                         <div class="rating-stars">
                             <span class="star">★</span>
@@ -350,8 +285,7 @@
                         </div>
                         <span class="rating-count">(128)</span>
                     </div>
-                    
-                    <!-- Price container -->
+                    <!-- Giá sản phẩm -->
                     <div class="price-container">
                         <div class="product-price">
                             <span class="price-original">₫299.000</span>
@@ -359,8 +293,7 @@
                             <span class="price-discount">-33%</span>
                         </div>
                     </div>
-                    
-                    <!-- Additional info -->
+                    <!-- Thông tin phụ -->
                     <div class="product-sold">Đã bán 1.2k</div>
                     <div class="product-location">
                         <i class="fas fa-map-marker-alt"></i>
@@ -384,22 +317,24 @@
             </div>
         </div>
     </div>
+    <!-- Thông báo thành công (nếu có) -->
     <div th:if="${msg}" class="alert alert-success text-center mt-3" th:text="${msg}">
         Thông báo thành công!
     </div>
 </section>
 
-
-<!-- Footer -->
+<!-- Footer: Chân trang, thông tin liên hệ, chính sách, mạng xã hội -->
 <footer class="bg-dark">
     <div class="container">
         <div class="row">
+            <!-- Giới thiệu về MuaZui -->
             <div class="col-md-3 mb-4">
                 <h5>Về MuaZui</h5>
                 <p class="text-muted small">
                     MuaZui là nền tảng mua bán trực tuyến hàng đầu Việt Nam, giúp bạn kết nối nhanh chóng và dễ dàng.
                 </p>
             </div>
+            <!-- Hỗ trợ khách hàng -->
             <div class="col-md-3 mb-4">
                 <h5>Hỗ trợ</h5>
                 <ul class="list-unstyled">
@@ -409,6 +344,7 @@
                     <li><a href="/terms" class="text-decoration-none text-muted">Điều khoản sử dụng</a></li>
                 </ul>
             </div>
+            <!-- Chính sách -->
             <div class="col-md-3 mb-4">
                 <h5>Chính sách</h5>
                 <ul class="list-unstyled">
@@ -417,13 +353,13 @@
                     <li><a href="/payment" class="text-decoration-none text-muted">Phương thức thanh toán</a></li>
                 </ul>
             </div>
+            <!-- Kết nối mạng xã hội -->
             <div class="col-md-3 mb-4">
                 <h5>Kết nối với chúng tôi</h5>
                 <div class="d-flex social-icons">
                     <a href="#" aria-label="Facebook" title="Facebook">
                         <i class="fab fa-facebook"></i>
                     </a>
-                   
                     <a href="#" aria-label="Instagram" title="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
@@ -431,24 +367,20 @@
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
-
                 <p class="text-muted small mt-3">Email: vinnet.com</p>
                 <p class="text-muted small">Điện thoại: 0344053506</p>
             </div>
         </div>
         <hr>
+        <!-- Bản quyền và địa chỉ công ty -->
         <div class="text-center text-muted small">
-             © 2025 MuaZui. Bản quyền thuộc về MuaZui.<br>
+             © 2025 MuaZui. Bản quyền thuộc về MuaZui.<br> quyền thuộc về MuaZui.<br>
             "MuaZui – Mua sắm dễ dàng, niềm vui ngập tràn!"<br>
             Địa chỉ: 123 Đường ABC, Quận 1, TP.HCM | MST: 0123456789
         </div>
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/home.js"></script>
-
-
-
-</body>
-</html>
+<!-- Nhúng Bootstrap JS và file JS riêng -->ap JS và file JS riêng -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>ttps://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/home.js"></script>c="/js/home.js"></script>
