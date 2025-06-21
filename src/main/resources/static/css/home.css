@@ -1,3 +1,6 @@
+/* ===== Ý CHÍNH CỦA TỪNG PHẦN CSS TRANG CHỦ - Shopee Style ===== */
+
+/* Thiết lập font, màu nền, màu chữ mặc định cho toàn trang */
 body {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8fafc;
@@ -7,6 +10,7 @@ body {
 }
 
 /* ===== HEADER STYLES ===== */
+/* Header: nền cam, chữ trắng, bóng đổ */
 header {
     background: #FF6F00;
     color: white;
@@ -26,7 +30,7 @@ header::before {
     pointer-events: none;
 }
 
-/* Header Top Section - Rút gọn chiều cao */
+/* Header Top: căn giữa logo, menu, nút đăng nhập/đăng ký */
 .header-top {
     display: flex;
     justify-content: space-between;
@@ -37,7 +41,7 @@ header::before {
     min-height: 60px;
 }
 
-/* Brand Section - Font mảnh và tinh gọn */
+/* Brand Section: logo, slogan thương hiệu */
 .brand-section {
     display: flex;
     flex-direction: column;
@@ -69,7 +73,7 @@ header::before {
     letter-spacing: 0.3px;
 }
 
-/* Navigation Styles - Làm phẳng hơn */
+/* Navbar: menu điều hướng, responsive, hiệu ứng hover */
 .navbar {
     padding: 0 0 0.5rem 0;
     z-index: 1060;
@@ -140,7 +144,7 @@ header::before {
     font-size: 0.9rem;
 }
 
-/* Dropdown Styles - Bo góc mượt hơn */
+/* Dropdown menu: bo góc, bóng đổ, hiệu ứng hover */
 .nav-dropdown .dropdown-menu {
     min-width: 240px;
     border-radius: 12px;
@@ -181,7 +185,7 @@ header::before {
     font-size: 0.9rem;
 }
 
-/* Auth Buttons - Icon hiện đại */
+/* Nút đăng nhập/đăng ký: hiệu ứng shimmer, icon, hover nổi */
 .auth-buttons {
     display: flex;
     gap: 0.4rem;
@@ -278,7 +282,10 @@ header::before {
     font-size: 0.8rem;
     z-index: 2;
     position: relative;
-}/* ===== ENHANCED SEARCH SECTION ===== */
+}
+
+/* ===== ENHANCED SEARCH SECTION ===== */
+/* Khu vực tìm kiếm: bo góc, bóng đổ, icon hiện đại */
 .search-section {
     background: none;
     padding: 1.5rem 0 2.5rem 0;
@@ -603,7 +610,7 @@ header::before {
     font-weight: 600;
 }
 
-/* Search Suggestions */
+/* Gợi ý tìm kiếm, tìm kiếm gần đây: tag nổi, hiệu ứng hover */
 .search-suggestions {
     display: flex;
     align-items: center;
@@ -972,6 +979,7 @@ header::before {
 }
 
 /* Banner Styles - Theo kích thước container Bootstrap */
+/* Banner slider: hình ảnh lớn, mũi tên chuyển, hiệu ứng chuyển động */
 .banner {
     position: relative;
     overflow: hidden;
@@ -1055,6 +1063,7 @@ header::before {
 }
 
 /* ===== PRODUCT GRID STYLES ===== */
+/* Danh sách sản phẩm: grid, card sản phẩm, hiệu ứng hover */
 .product-section {
     background: #fff;
     padding: 3rem 0;
@@ -1280,6 +1289,9 @@ header::before {
 .product-card:nth-child(3) { animation-delay: 0.3s; }
 .product-card:nth-child(4) { animation-delay: 0.4s; }
 .product-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* ===== FOOTER STYLES ===== */
+/* Footer: giữ nguyên style, màu sắc, icon mạng xã hội */
 footer.bg-dark {
     background: #f8f9fa !important;
     color: #f0f2f3;
@@ -1559,6 +1571,8 @@ footer .row > div {
     padding: 2px 4px;
     border-radius: 8px;
     animation:
+}
+
 /* Quick Filters Styles */
 .quick-filters {
     display: flex;
