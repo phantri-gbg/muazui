@@ -1,0 +1,1489 @@
+/* Modern E-commerce Login - Shopee Inspired */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #ee4d2d 0%, #ff6533 50%, #ff7849 100%);
+    min-height: 100vh;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Pattern */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-10px) rotate(1deg); }
+    66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+.login-wrapper {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        0 8px 16px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    min-height: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Left Panel - Brand Section */
+.login-left {
+    background: linear-gradient(135deg, #ee4d2d 0%, #ff6533 50%, #ff7849 100%);
+    padding: 60px 40px;
+    color: white;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-left::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        /* Layer 1: Geometric shapes - Tăng độ rõ */
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.25);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(255,255,255,0.12);stop-opacity:1" /></linearGradient><linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.2);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(255,255,255,0.08);stop-opacity:1" /></linearGradient></defs><circle cx="40" cy="40" r="10" fill="url(%23grad1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"><animate attributeName="r" values="10;15;10" dur="4s" repeatCount="indefinite"/><animate attributeName="fill-opacity" values="0.8;1;0.8" dur="4s" repeatCount="indefinite"/></circle><polygon points="160,25 175,55 145,55" fill="url(%23grad2)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"><animateTransform attributeName="transform" type="rotate" values="0 160 40;360 160 40" dur="8s" repeatCount="indefinite"/></polygon><rect x="25" y="145" width="16" height="16" rx="3" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"><animateTransform attributeName="transform" type="rotate" values="0 33 153;45 33 153;0 33 153" dur="6s" repeatCount="indefinite"/></rect><circle cx="170" cy="160" r="8" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="1"><animate attributeName="cy" values="160;145;160" dur="3s" repeatCount="indefinite"/><animate attributeName="r" values="8;10;8" dur="3s" repeatCount="indefinite"/></circle><circle cx="80" cy="100" r="5" fill="rgba(255,255,255,0.15)"><animate attributeName="cx" values="80;90;80" dur="5s" repeatCount="indefinite"/></circle><polygon points="120,180 130,190 110,190" fill="rgba(255,255,255,0.12)"><animateTransform attributeName="transform" type="rotate" values="360 120 185;0 120 185" dur="7s" repeatCount="indefinite"/></polygon></svg>'),
+        /* Layer 2: Enhanced floating particles */
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.22) 3px, transparent 3px),
+        radial-gradient(circle at 75% 75%, rgba(255,255,255,0.18) 2.5px, transparent 2.5px),
+        radial-gradient(circle at 50% 10%, rgba(255,255,255,0.15) 2px, transparent 2px),
+        radial-gradient(circle at 10% 90%, rgba(255,255,255,0.2) 3.5px, transparent 3.5px),
+        radial-gradient(circle at 90% 30%, rgba(255,255,255,0.12) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.16) 2px, transparent 2px),
+        /* Layer 3: Subtle glow effects */
+        radial-gradient(ellipse at 40% 60%, rgba(255,255,255,0.08) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 35%);
+    background-size: 
+        200px 200px, 
+        90px 90px, 
+        130px 130px, 
+        70px 70px, 
+        110px 110px, 
+        95px 95px,
+        85px 85px,
+        180px 180px,
+        160px 160px;
+    animation: 
+        driftComplex 22s linear infinite,
+        floatVertical 7s ease-in-out infinite,
+        pulseGlow 10s ease-in-out infinite;
+    opacity: 0.85; /* Tăng từ 0.7 lên 0.85 */
+    filter: blur(0.2px); /* Giảm blur từ 0.3px xuống 0.2px */
+}
+
+/* Animation chính - di chuyển phức tạp */
+@keyframes driftComplex {
+    0% { 
+        transform: translate(0, 0) rotate(0deg);
+    }
+    20% { 
+        transform: translate(-8px, -6px) rotate(72deg);
+    }
+    40% { 
+        transform: translate(-12px, 2px) rotate(144deg);
+    }
+    60% { 
+        transform: translate(-6px, -10px) rotate(216deg);
+    }
+    80% { 
+        transform: translate(-15px, -4px) rotate(288deg);
+    }
+    100% { 
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+/* Animation phụ - chuyển động dọc */
+@keyframes floatVertical {
+    0%, 100% { 
+        transform: translateY(0px);
+    }
+    33% { 
+        transform: translateY(-6px);
+    }
+    66% { 
+        transform: translateY(3px);
+    }
+}
+
+/* Animation mới - hiệu ứng phát sáng */
+@keyframes pulseGlow {
+    0%, 100% { 
+        filter: blur(0.2px) brightness(1);
+    }
+    50% { 
+        filter: blur(0.1px) brightness(1.1);
+    }
+}
+
+.brand-section {
+    position: relative;
+    z-index: 2;
+}
+
+.brand-logo {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    letter-spacing: -0.02em;
+}
+
+.brand-tagline {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    line-height: 1.6;
+    font-weight: 400;
+    margin-bottom: 32px;
+}
+
+.features-list {
+    list-style: none;
+    text-align: left;
+    max-width: 280px;
+}
+
+.features-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.features-list li::before {
+    content: '✓';
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Right Panel - Form Section */
+.login-right {
+    padding: 60px 50px;
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+    position: relative;
+}
+
+/* Header Shopee-inspired với twist độc đáo */
+.login-header {
+    background: linear-gradient(135deg, #fff 0%, #f8f9ff 100%);
+    border-bottom: 1px solid #e5e5e5;
+    box-shadow: 0 2px 8px rgba(238, 77, 45, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle animated background pattern */
+.login-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(238, 77, 45, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(238, 77, 45, 0.02) 0%, transparent 50%);
+    animation: floatPattern 20s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes floatPattern {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+.login-header .container {
+    max-width: 1200px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Logo với gradient text và hover effect */
+.login-header .text-primary {
+    background: linear-gradient(135deg, #ee4d2d 0%, #ff6b35 50%, #ee4d2d 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.login-header a[href="/"] {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.login-header a[href="/"]:hover {
+    transform: translateY(-1px);
+}
+
+/* Icon với pulse effect */
+.login-header .fas.fa-shopping-bag {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.login-header .fas.fa-shopping-bag::before {
+    position: relative;
+    z-index: 2;
+}
+
+.login-header .fas.fa-shopping-bag::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(238, 77, 45, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+}
+
+.login-header a[href="/"]:hover .fas.fa-shopping-bag::after {
+    transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* Brand name với modern typography */
+.login-header .fs-3 {
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px;
+    position: relative;
+}
+
+/* Divider với animated glow */
+.login-header .ms-3::before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    background: linear-gradient(to bottom, transparent, #ee4d2d, transparent);
+    margin-right: 16px;
+    vertical-align: middle;
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.3; box-shadow: 0 0 0 rgba(238, 77, 45, 0); }
+    50% { opacity: 1; box-shadow: 0 0 8px rgba(238, 77, 45, 0.3); }
+}
+
+.login-header .fs-4 {
+    font-size: 1.1rem !important;
+    color: #555 !important;
+    font-weight: 500;
+    position: relative;
+}
+
+/* Right side với glassmorphism effect */
+.login-header .d-flex.align-items-center:last-child {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 8px 16px;
+    border: 1px solid rgba(238, 77, 45, 0.1);
+    transition: all 0.3s ease;
+}
+
+.login-header .d-flex.align-items-center:last-child:hover {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(238, 77, 45, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(238, 77, 45, 0.1);
+}
+
+/* Help link với modern styling */
+.login-header a[href="/help"] {
+    color: #ee4d2d !important;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-header a[href="/help"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(238, 77, 45, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.login-header a[href="/help"]:hover::before {
+    left: 100%;
+}
+
+.login-header a[href="/help"]:hover {
+    background: rgba(238, 77, 45, 0.05);
+    transform: translateX(2px);
+}
+
+/* Language dropdown với custom styling */
+.login-header .dropdown-toggle {
+    color: #666 !important;
+    font-size: 14px;
+    font-weight: 500;
+    background: rgba(238, 77, 45, 0.05) !important;
+    border: 1px solid rgba(238, 77, 45, 0.1) !important;
+    border-radius: 15px !important;
+    padding: 6px 12px !important;
+    transition: all 0.3s ease;
+}
+
+.login-header .dropdown-toggle:hover,
+.login-header .dropdown-toggle:focus,
+.login-header .dropdown-toggle:active {
+    color: #ee4d2d !important;
+    background: rgba(238, 77, 45, 0.1) !important;
+    border-color: rgba(238, 77, 45, 0.2) !important;
+    box-shadow: 0 2px 8px rgba(238, 77, 45, 0.1) !important;
+    transform: translateY(-1px);
+}
+
+.login-header .dropdown-toggle::after {
+    margin-left: 6px;
+    border-top-color: #ee4d2d;
+    border-width: 4px 3px 0;
+    transition: transform 0.3s ease;
+}
+
+.login-header .dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+}
+/* Liên hệ ở header */
+.contact-info .contact-item {
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    background: rgba(238, 77, 45, 0.05);
+    border: 1px solid rgba(238, 77, 45, 0.1);
+    border-radius: 15px;
+    padding: 6px 12px;
+    transition: all 0.3s ease;
+}
+
+.contact-info .contact-item:hover {
+    color: #ee4d2d;
+    background: rgba(238, 77, 45, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Responsive với smooth transitions */
+@media (max-width: 768px) {
+    .login-header .fs-3 {
+        font-size: 1.3rem !important;
+    }
+    
+    .login-header .fs-4 {
+        font-size: 0.95rem !important;
+    }
+    
+    .login-header .d-flex.align-items-center:last-child {
+        padding: 6px 12px;
+        border-radius: 20px;
+    }
+    
+    .login-header a[href="/help"] span {
+        display: none;
+    }
+    
+    .login-header .dropdown-toggle span {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .login-header .py-3 {
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+    }
+    
+    .login-header .ms-3::before {
+        margin-right: 12px;
+    }
+    
+    .login-header .ms-3 {
+        margin-left: 12px !important;
+    }
+}
+
+/* Loading animation khi hover vào header */
+.login-header:hover::before {
+    animation-duration: 10s;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+.login-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+}
+
+.login-subtitle {
+    color: #64748b;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 24px;
+    position: relative;
+}
+
+/* Form Floating - Sửa lại hoàn toàn */
+.form-floating {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.form-floating > .form-control {
+    height: calc(3.5rem + 2px);
+    line-height: 1.25;
+    padding: 1rem 0.75rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 16px;
+    background: #fafbfc;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-floating > .form-control:focus {
+    border-color: #ee4d2d;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(238, 77, 45, 0.1);
+    outline: 0;
+}
+
+.form-floating > .form-control:not(:placeholder-shown),
+.form-floating > .form-control:focus {
+    padding-top: 1.625rem;
+    padding-bottom: 0.625rem;
+}
+
+/* Ẩn placeholder thật */
+.form-floating > .form-control::placeholder {
+    color: transparent;
+}
+
+/* Label hoạt động như placeholder */
+.form-floating > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 1rem 0.75rem;
+    pointer-events: none;
+    border: 1px solid transparent;
+    transform-origin: 0 0;
+    transition: opacity 0.3s ease-in-out;
+    color: #64748b;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+/* Khi focus hoặc có nội dung - label thu nhỏ và di chuyển */
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Icon trong label */
+.form-floating > label i {
+    margin-right: 8px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.form-floating > .form-control:focus ~ label i,
+.form-floating > .form-control:not(:placeholder-shown) ~ label i {
+    opacity: 1;
+}
+
+/* Password Toggle - Sửa lại */
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper .password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.password-wrapper .password-toggle:hover {
+    color: #ee4d2d;
+    background: rgba(238, 77, 45, 0.1);
+}
+
+/* Placeholder - Đảm bảo placeholder trong suốt */
+.form-floating > .form-control::placeholder {
+    color: transparent;
+}
+
+.form-floating > .form-control:focus::placeholder {
+    color: transparent;
+}
+
+/* Invalid feedback */
+.invalid-feedback {
+    display: none; /* Mặc định ẩn */
+    width: 100%;
+    font-size: 12px;
+    color: #dc2626;
+    margin-top: 6px;
+    font-weight: 500;
+    padding-left: 4px;
+    animation: slideDown 0.4s ease-out; /* Thêm animation */
+}
+
+/* Hiển thị khi form control có class is-invalid */
+.form-control.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+/* Form Options */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+}
+
+.form-check-input {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.form-check-input:checked {
+    background-color: #ee4d2d;
+    border-color: #ee4d2d;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m13.854 3.646-7.5 7.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6 10.293l7.146-7.147a.5.5 0 0 1 .708.708z'/%3e%3c/svg%3e");
+}
+
+.form-check-label {
+    font-size: 14px;
+    color: #4a5568;
+    cursor: pointer;
+}
+
+.forgot-password {
+    color: #ee4d2d;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.forgot-password:hover {
+    color: #d63916;
+    background: rgba(238, 77, 45, 0.1);
+    text-decoration: none;
+}
+
+/* Login Button */
+.btn-login {
+    width: 100%;
+    background: linear-gradient(135deg, #ee4d2d 0%, #ff6533 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 16px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: none;
+    letter-spacing: 0.01em;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+    box-shadow: 0 4px 12px rgba(238, 77, 45, 0.3);
+}
+
+.btn-login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(238, 77, 45, 0.4);
+    background: linear-gradient(135deg, #d63916 0%, #ee4d2d 100%);
+}
+
+.btn-login:hover::before {
+    left: 100%;
+}
+
+.btn-login:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(238, 77, 45, 0.3);
+}
+
+.btn-login:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none;
+}
+
+/* Social Login */
+.social-divider {
+    position: relative;
+    text-align: center;
+    margin: 32px 0;
+    animation: fadeInUp 0.6s ease-out 0.5s both;
+}
+
+.social-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+}
+
+.social-divider span {
+    background: white;
+    padding: 0 20px;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Đảm bảo social buttons luôn 1 hàng */
+.social-buttons {
+    display: flex !important;
+     flex-direction: row !important;
+    gap: 12px;
+    margin-bottom: 32px;
+    flex-wrap: nowrap; /* Không cho xuống hàng */
+}
+
+.btn-social {
+    flex: 1;
+    border: 2px solid #e2e8f0;
+    background: white;
+    color: #4a5568;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap; /* Không cho text xuống hàng */
+    min-width: 0; /* Cho phép shrink */
+}
+
+.btn-social:hover {
+    border-color: #ee4d2d;
+    color: #ee4d2d;
+    background: rgba(238, 77, 45, 0.05);
+    transform: translateY(-1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .social-buttons {
+        gap: 8px;
+    }
+    
+    .btn-social {
+        font-size: 12px;
+        padding: 10px 12px;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-buttons {
+        gap: 6px;
+    }
+    
+    .btn-social {
+        font-size: 11px;
+        padding: 8px 8px;
+        gap: 4px;
+    }
+    
+    /* Ẩn text, chỉ hiện icon nếu cần */
+    .btn-social span {
+        display: none;
+    }
+}
+
+/* Register Link */
+.register-link {
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid #e2e8f0;
+    animation: fadeInUp 0.6s ease-out 0.6s both;
+}
+
+.register-link p {
+    color: #64748b;
+    font-size: 14px;
+    margin: 0;
+}
+
+.register-link a {
+    color: #ee4d2d;
+        text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: 4px;
+}
+
+.register-link a:hover {
+    color: #d63916;
+    background: rgba(238, 77, 45, 0.1);
+    text-decoration: none;
+}
+
+/* Alert Styles */
+.alert {
+    border: none;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    padding: 16px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    animation: slideDown 0.4s ease-out;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    color: #dc2626;
+    border-left: 4px solid #dc2626;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.1);
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    color: #16a34a;
+    border-left: 4px solid #16a34a;
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.1);
+}
+
+.alert-info {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    color: #2563eb;
+    border-left: 4px solid #2563eb;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+/* Form Validation */
+.invalid-feedback {
+    display: block;
+    font-size: 12px;
+    color: #dc2626;
+    margin-top: 6px;
+    font-weight: 500;
+    padding-left: 4px;
+}
+
+.form-control.is-invalid {
+    border-color: #dc2626;
+    background: #fef2f2;
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+}
+
+.form-control.is-valid {
+    border-color: #16a34a;
+    background: #f0fdf4;
+    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.1);
+}
+
+/* Loading States */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.btn-loading .btn-text {
+    opacity: 0;
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .login-container {
+        max-width: 900px;
+    }
+    
+    .login-left {
+        padding: 50px 35px;
+    }
+    
+    .login-right {
+        padding: 50px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        margin: 15px;
+        max-width: 500px;
+        min-height: auto;
+    }
+    
+    .login-left {
+        padding: 40px 30px;
+        min-height: 280px;
+        order: 1;
+    }
+    
+    .login-right {
+        padding: 40px 30px;
+        min-height: auto;
+        flex: 1;
+        order: 2;
+    }
+    
+    .brand-logo {
+        font-size: 2rem;
+    }
+    
+    .brand-tagline {
+        font-size: 1rem;
+    }
+    
+    .login-title {
+        font-size: 1.5rem;
+    }
+    
+    .features-list {
+        display: none;
+    }
+     .social-buttons {
+        gap: 8px;
+    }
+    
+    .btn-social {
+        font-size: 12px;
+        padding: 10px 12px;
+        gap: 6px;
+    }
+    
+    
+    
+}
+
+@media (max-width: 480px) {
+    .login-wrapper {
+        padding: 10px;
+    }
+    
+    .login-container {
+        max-width: 100%;
+        margin: 10px;
+        border-radius: 20px;
+    }
+    
+    .login-left {
+        padding: 30px 20px;
+        min-height: 220px;
+    }
+    
+    .login-right {
+        padding: 30px 20px;
+    }
+    
+    .brand-logo {
+        font-size: 1.75rem;
+    }
+    
+    .login-title {
+        font-size: 1.375rem;
+    }
+    
+    .form-control {
+        font-size: 16px; /* Prevent zoom on iOS */
+        padding: 14px 18px;
+    }
+    
+    .btn-login {
+        padding: 14px 20px;
+    }
+}
+
+/* Large Screens */
+@media (min-width: 1200px) {
+    .login-container {
+        max-width: 1100px;
+    }
+    
+    .login-left {
+        padding: 70px 50px;
+    }
+    
+    .login-right {
+        padding: 70px 60px;
+    }
+    
+    .brand-logo {
+        font-size: 2.75rem;
+    }
+    
+    .login-title {
+        font-size: 2rem;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .login-container {
+        background: rgba(30, 41, 59, 0.95);
+        border: 1px solid rgba(71, 85, 105, 0.3);
+    }
+    
+    .login-right {
+        background: #1e293b;
+    }
+    
+    .login-title {
+        color: #f1f5f9;
+    }
+    
+    .login-subtitle {
+        color: #94a3b8;
+    }
+    
+    .form-control {
+        background: #334155;
+        border-color: #475569;
+        color: #f1f5f9;
+    }
+    
+    .form-control:focus {
+        background: #475569;
+        border-color: #ee4d2d;
+    }
+    
+    .form-floating > label {
+        color: #94a3b8;
+    }
+    
+    .social-divider span {
+        background: #1e293b;
+        color: #94a3b8;
+    }
+    
+    .btn-social {
+        background: #334155;
+        border-color: #475569;
+        color: #f1f5f9;
+    }
+    
+    .register-link p {
+        color: #94a3b8;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .form-control {
+        border-width: 3px;
+    }
+    
+    .btn-login {
+        border: 2px solid #000;
+    }
+    
+    .form-control:focus {
+        box-shadow: 0 0 0 3px #000;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .login-container {
+        animation: none;
+    }
+    
+    .form-floating {
+        animation: none;
+    }
+    
+    body::before {
+        animation: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white !important;
+    }
+    
+    .login-wrapper {
+        background: white;
+    }
+    
+    .login-container {
+        box-shadow: none;
+        border: 2px solid #000;
+    }
+    
+    .login-left {
+        background: #f5f5f5 !important;
+        color: #000 !important;
+    }
+    
+    .btn-login,
+    .btn-social {
+        border: 2px solid #000 !important;
+        background: white !important;
+        color: #000 !important;
+    }
+    
+    .social-buttons,
+    .register-link {
+        display: none;
+    }
+}
+
+/* Focus Visible for Better Accessibility */
+.form-control:focus-visible {
+    outline: 2px solid #ee4d2d;
+    outline-offset: 2px;
+}
+
+.btn-login:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Custom Scrollbar */
+.login-right::-webkit-scrollbar {
+    width: 6px;
+}
+
+.login-right::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.login-right::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 3px;
+}
+
+.login-right::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.d-none { display: none; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+.align-items-center { align-items: center; }
+.justify-content-center { justify-content: center; }
+.justify-content-between { justify-content: space-between; }
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 0.75rem; }
+.mt-4 { margin-top: 1rem; }
+
+/* Ripple Effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Additional Interactive Elements */
+.form-control::placeholder {
+    color: #9ca3af;
+    opacity: 1;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #9ca3af;
+}
+
+.form-control::-moz-placeholder {
+    color: #9ca3af;
+    opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+    color: #9ca3af;
+}
+
+/* Enhanced Focus States */
+.form-control:focus::placeholder {
+    opacity: 0.5;
+}
+
+/* Smooth Transitions */
+.login-container * {
+    transition: all 0.3s ease;
+}
+
+/* Hover Effects for Interactive Elements */
+.form-check-input:hover {
+    border-color: #ee4d2d;
+    transform: scale(1.05);
+}
+
+.form-check-label:hover {
+    color: #2d3748;
+}
+
+/* Enhanced Button States */
+.btn-login:focus {
+    box-shadow: 0 0 0 4px rgba(238, 77, 45, 0.3);
+}
+
+.btn-social:focus {
+    box-shadow: 0 0 0 4px rgba(238, 77, 45, 0.1);
+    outline: none;
+}
+
+/* Loading Animation Enhancement */
+@keyframes buttonPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.btn-login.loading {
+    animation: buttonPulse 1s infinite;
+}
+
+/* Error State Animations */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.form-control.error {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Success State */
+.form-control.success {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+/* Enhanced Social Buttons */
+.btn-google {
+    border-color: #db4437;
+    color: #db4437;
+}
+
+.btn-google:hover {
+    background: #db4437;
+    color: white;
+}
+
+.btn-facebook {
+    border-color: #4267b2;
+    color: #4267b2;
+}
+
+.btn-facebook:hover {
+    background: #4267b2;
+    color: white;
+}
+
+/* Footer styles are preserved as requested - không thay đổi */
+footer.bg-dark {
+    background: #f8f9fa !important;
+    color: #f0f2f3;
+    padding: 3rem 0;
+    font-family: 'Poppins', sans-serif;
+    border-top: 3px solid #ee4d2d;
+    position: relative;
+    z-index: 10;
+}
+
+footer h5 {
+    color: #ee4d2d;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem; /* Giảm từ 1.3rem */
+    letter-spacing: 0.02em; /* Giảm từ 0.05em */
+    text-transform: uppercase;
+    line-height: 1.4;
+    white-space: nowrap; /* Không xuống dòng */
+    display: block;
+}
+
+
+footer p.text-muted,
+footer li a.text-muted {
+    color: #0388fd;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+footer a.text-decoration-none.text-muted {
+    color: #ffc107;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+footer a.text-decoration-none.text-muted:hover {
+    color: #e0a800;
+    text-decoration: underline;
+}
+
+footer .social-icons a {
+    font-size: 1.2rem;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+}
+
+footer .social-icons a:hover {
+    transform: scale(1.2);
+}
+
+footer .social-icons .fa-facebook,
+footer .social-icons .fa-facebook-f {
+    color: #1877f2;
+}
+
+footer .social-icons .fa-twitter,
+footer .social-icons .fa-x-twitter {
+    color: #1da1f2;
+}
+
+footer .social-icons .fa-instagram {
+    color: #e4405f;
+}
+
+footer .social-icons .fa-youtube {
+    color: #ff0000;
+}
+
+footer p.text-muted.small,
+footer .text-center.text-muted.small {
+    color: #101112;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+}
+
+footer hr {
+    border-color: #7a7878;
+    margin: 1.5rem 0;
+    width: 100vw;
+    border-width: 1px 0 0 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+footer .container {
+    max-width: 1200px;
+}
+
+footer .row > div {
+    padding: 0 1rem;
+}
